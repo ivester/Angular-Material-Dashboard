@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Material Dashboard</title>
+  <link rel="stylesheet" href="src/content/css/main.css">
+</head>
+<body ng-app="materialApp" layout="column">
+
+  <!-- Container #1 (see wireframe) -->
+  <md-toolbar layout="row" >
+    <h1>Angular Material - Starter App</h1>
+  </md-toolbar>
+
+  <!-- Container #2 -->
+  <div flex layout="row">
+
+    <!-- Container #3 -->
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+      Side nav
+    </md-sidenav>
+
+    <!-- Container #4 -->
+    <md-content flex id="content">
+      Content
+    </md-content>
+
+  </div>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+
+<script>
+  angular.module('materialApp', ['ngMaterial'])
+      .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('brown')
+            .accentPalette('blue');
+      });
+</script>
+</body>
+</html>
