@@ -5,40 +5,56 @@
   <title>Angular Material Dashboard</title>
   <link rel="stylesheet" href="src/content/css/main.css">
 </head>
-<body ng-app="materialApp" layout="column">
+<body ng-app="app" layout="column">
 
-  <!-- Container #1 (see wireframe) -->
-  <md-toolbar layout="row" >
-    <h1>Angular Material - Starter App</h1>
-  </md-toolbar>
+<md-toolbar layout="row" ng-controller="ToolbarController as vm">
+  <h1>Angular Material - Starter App</h1>
+  <button ng-click="vm.logout()">Logout</button>
+</md-toolbar>
 
-  <!-- Container #2 -->
-  <div flex layout="row">
+<div flex layout="row">
 
-    <!-- Container #3 -->
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-      Side nav
-    </md-sidenav>
+  <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+    Side nav
+  </md-sidenav>
 
-    <!-- Container #4 -->
-    <md-content flex id="content">
-      Content
-    </md-content>
+  <md-content flex id="content">
+    <div ng-view></div>
+  </md-content>
 
-  </div>
+</div>
 
+<!-- Third-party JS -->
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
 
-<script>
-  angular.module('materialApp', ['ngMaterial'])
-      .config(function($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-            .primaryPalette('brown')
-            .accentPalette('blue');
-      });
-</script>
+<!-- Main App Module -->
+<script src="src/app/app.module.js"></script>
+
+<!-- Core Module -->
+<script src="src/app/core/core.module.js"></script>
+<script src="src/app/core/constants.js"></script>
+<script src="src/app/core/firebaseData.service.js"></script>
+<script src="src/app/core/widget.service.js"></script>
+
+<!-- Auth Module -->
+<script src="src/app/auth/auth.module.js"></script>
+<script src="src/app/auth/config.route.js"></script>
+<script src="src/app/auth/auth.service.js"></script>
+<script src="src/app/auth/auth.controller.js"></script>
+
+<!-- Dashboard Module -->
+<script src="src/app/dashboard/dashboard.module.js"></script>
+<script src="src/app/dashboard/config.route.js"></script>
+<script src="src/app/dashboard/dashboard.controller.js"></script>
+
+<!-- Toolbar Module -->
+<script src="src/app/toolbar/toolbar.module.js"></script>
+<script src="src/app/toolbar/toolbar.controller.js"></script>
 </body>
 </html>

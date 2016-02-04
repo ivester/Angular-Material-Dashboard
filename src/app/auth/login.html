@@ -1,0 +1,12 @@
+<form novalidate>
+  <label>
+    email
+    <input type="email" ng-model="vm.user.email">
+  </label>
+  <label>
+    password
+    <input type="password" ng-model="vm.user.password">
+  </label>
+  <button type="button" ng-click="vm.login(vm.user)">Login</button>
+</form>
+{{vm.user}}

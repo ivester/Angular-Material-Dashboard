@@ -1,0 +1,18 @@
+<form ng-submit="vm.addWidget()">
+  <label>
+    Widget Title
+    <input type="text" ng-model="vm.newWidget.title">
+  </label>
+  <label>
+    Widget Description
+    <textarea ng-model="vm.newWidget.description"></textarea>
+  </label>
+
+  <button type="submit">Add Widget</button>
+</form>
+
+<ul>
+  <li ng-repeat="widget in vm.widget">
+    {{widget.title}} - {{widget.description}}
+  </li>
+</ul>
