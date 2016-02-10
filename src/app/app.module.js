@@ -13,18 +13,20 @@
       // Custom Modules
       'app.core',
       'app.auth',
+      'app.global',
       'app.dashboard',
       'app.toolbar'
     ])
     .config(configFunction)
     .run(runFunction);
 
-  configFunction.$inject = ['$mdThemingProvider', '$routeProvider'];
+  configFunction.$inject = ['$mdThemingProvider', '$mdIconProvider', '$routeProvider'];
 
-  function configFunction($mdThemingProvider, $routeProvider) {
+  function configFunction($mdThemingProvider, $mdIconProvider, $routeProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('brown')
       .accentPalette('blue');
+    $mdIconProvider.icon("menu", "./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg", 24);
     $routeProvider.otherwise({
       redirectTo: '/'
     });

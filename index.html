@@ -5,16 +5,23 @@
   <title>Angular Material Dashboard</title>
   <link rel="stylesheet" href="src/content/css/main.css">
 </head>
-<body ng-app="app" layout="column">
+<body ng-app="app" layout="column" ng-controller="GlobalController as global">
 
-<md-toolbar layout="row" ng-controller="ToolbarController as vm">
-  <h1>Angular Material - Starter App</h1>
-  <button ng-click="vm.logout()">Logout</button>
+<md-toolbar layout="row" layout-align="space-between center" ng-hide="global.hideNav()" ng-controller="ToolbarController as vm">
+  <md-button class="menu" hide-gt-sm ng-click="vm.toggleSidenav()" >
+    <md-icon md-svg-icon="menu" ></md-icon>
+  </md-button>
+  <md-button class="button-style-temp" ng-click="vm.logout()">Logout</md-button>
 </md-toolbar>
 
 <div flex layout="row">
 
-  <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+  <md-sidenav
+    class="md-whiteframe-z2"
+    md-is-locked-open="$mdMedia('gt-sm')"
+    md-component-id="left"
+    ng-click="ul.toggleList()"
+    ng-hide="global.hideNav()">
     Side nav
   </md-sidenav>
 
@@ -47,6 +54,10 @@
 <script src="src/app/auth/config.route.js"></script>
 <script src="src/app/auth/auth.service.js"></script>
 <script src="src/app/auth/auth.controller.js"></script>
+
+<!-- Global Module -->
+<script src="src/app/global/global.module.js"></script>
+<script src="src/app/global/global.controller.js"></script>
 
 <!-- Dashboard Module -->
 <script src="src/app/dashboard/dashboard.module.js"></script>

@@ -10806,3 +10806,6 @@ md-tooltip {
 @media screen and (-ms-high-contrast: active) {
   md-whiteframe {
     border: 1px solid #fff; } }
+
+.button-style-temp {
+  margin-left: auto; }

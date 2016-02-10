@@ -5,17 +5,22 @@
     .module('app.toolbar')
     .controller('ToolbarController', ToolbarController);
 
-  ToolbarController.$inject = ['authService', '$location'];
+  ToolbarController.$inject = ['$mdSidenav', '$location', 'authService'];
 
-  function ToolbarController(authService, $location) {
+  function ToolbarController($mdSidenav, $location, authService) {
     var vm = this;
 
     vm.logout = logout;
+    vm.toggleSidenav = toggleSidenav;
 
     function logout() {
       console.log('logout');
       authService.logout();
       $location.path('/login')
+    }
+
+    function toggleSidenav() {
+      $mdSidenav('left').toggle();
     }
   }
 })();
