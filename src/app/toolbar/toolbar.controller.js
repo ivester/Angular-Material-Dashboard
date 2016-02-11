@@ -14,7 +14,6 @@
     vm.toggleSidenav = toggleSidenav;
 
     function logout() {
-      console.log('logout');
       authService.logout();
       $location.path('/login')
     }

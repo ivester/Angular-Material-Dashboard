@@ -14,10 +14,8 @@
     vm.hideNav = function() {
       path = $location.path();
       if(path === '/' || path === '/register' || path === '/login') {
-        console.log('true');
         return true;
       } else {
-        console.log('false');
         return false;
       }
     };

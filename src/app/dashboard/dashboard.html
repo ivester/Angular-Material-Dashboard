@@ -1,18 +1,35 @@
-<form ng-submit="vm.addWidget()">
-  <label>
-    Widget Title
-    <input type="text" ng-model="vm.newWidget.title">
-  </label>
-  <label>
-    Widget Description
-    <textarea ng-model="vm.newWidget.description"></textarea>
-  </label>
+<md-content flex id="content" layout="row" layout-align="start start" layout-wrap>
+  <div flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
+    <md-card>
+      <md-card-content>
+        <form novalidate>
+          <md-input-container class="md-block">
+            <label>Widget Title</label>
+            <input type="text" ng-model="vm.newWidget.title">
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Widget Description</label>
+            <textarea ng-model="vm.newWidget.description"></textarea>
+          </md-input-container>
+          <md-button class="md-raised md-primary" ng-click="vm.addWidget()">Add Widget</md-button>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
 
-  <button type="submit">Add Widget</button>
-</form>
+  <div flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
+    <md-card>
+      <md-card-content>
+        <md-list>
+          <md-list-item class="md-2-line" ng-repeat="widget in vm.widget">
+            <div class="md-list-item-text">
+              <h3>{{widget.title}}</h3>
+              <p>{{widget.description}}</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
 
-<ul>
-  <li ng-repeat="widget in vm.widget">
-    {{widget.title}} - {{widget.description}}
-  </li>
-</ul>
+</md-content>

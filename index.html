@@ -7,8 +7,13 @@
 </head>
 <body ng-app="app" layout="column" ng-controller="GlobalController as global">
 
-<md-toolbar layout="row" layout-align="space-between center" ng-hide="global.hideNav()" ng-controller="ToolbarController as vm">
-  <md-button class="menu" hide-gt-sm ng-click="vm.toggleSidenav()" >
+<md-toolbar
+  layout="row"
+  layout-align="space-between center"
+  ng-hide="global.hideNav()"
+  ng-controller="ToolbarController as vm"
+  ng-cloak>
+  <md-button hide-gt-sm ng-click="vm.toggleSidenav()">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
   <md-button class="button-style-temp" ng-click="vm.logout()">Logout</md-button>
@@ -21,13 +26,12 @@
     md-is-locked-open="$mdMedia('gt-sm')"
     md-component-id="left"
     ng-click="ul.toggleList()"
-    ng-hide="global.hideNav()">
+    ng-hide="global.hideNav()"
+    ng-cloak>
     Side nav
   </md-sidenav>
 
-  <md-content flex id="content">
-    <div ng-view></div>
-  </md-content>
+  <ng-view flex layout="row"></ng-view>
 
 </div>
 
