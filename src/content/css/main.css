@@ -10807,15 +10807,37 @@ md-tooltip {
   md-whiteframe {
     border: 1px solid #fff; } }
 
+md-content {
+  z-index: 0; }
+
 .button-style-temp {
   margin-left: auto; }
 
 .background-image-full {
-  background: url("https://source.unsplash.com/VNseEaTt9w4/1600x900") no-repeat center center fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation-name: fade-in;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 0s; }
 
 .md-whiteframe-z1 {
   background-color: white; }
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
