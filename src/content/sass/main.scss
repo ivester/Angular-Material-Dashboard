@@ -5,6 +5,16 @@ md-content {
   z-index: 0;
 }
 
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.temp-no-margin {
+  margin: 0;
+}
+
 .button-style-temp {
   margin-left: auto;
 }
@@ -36,6 +46,10 @@ md-content {
 .md-whiteframe-z1 {
   background-color: white;
 }
+
+//.no-padding {
+//  padding: 0;
+//}
 
 @-webkit-keyframes fade-in {
   0%   { opacity: 0; }

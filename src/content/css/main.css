@@ -10810,6 +10810,14 @@ md-tooltip {
 md-content {
   z-index: 0; }
 
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.temp-no-margin {
+  margin: 0; }
+
 .button-style-temp {
   margin-left: auto; }
 

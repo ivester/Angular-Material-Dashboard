@@ -2,34 +2,14 @@
   <div flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
     <md-card>
       <md-card-content>
-        <form novalidate>
-          <md-input-container class="md-block">
-            <label>Widget Title</label>
-            <input type="text" ng-model="vm.newWidget.title">
-          </md-input-container>
-          <md-input-container class="md-block">
-            <label>Widget Description</label>
-            <textarea ng-model="vm.newWidget.description"></textarea>
-          </md-input-container>
-          <md-button class="md-raised md-primary" ng-click="vm.addWidget()">Add Widget</md-button>
-        </form>
+        <md-button class="md-raised md-primary" ng-click="vm.addCard('task')">Add Task Card</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.addCard('weather')">Add Weather Card</md-button>
       </md-card-content>
     </md-card>
   </div>
 
-  <div flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
-    <md-card>
-      <md-card-content>
-        <md-list>
-          <md-list-item class="md-2-line" ng-repeat="widget in vm.widget">
-            <div class="md-list-item-text">
-              <h3>{{widget.title}}</h3>
-              <p>{{widget.description}}</p>
-            </div>
-          </md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+  <div ng-repeat="card in vm.cards" flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
+    <ir-card card-title="{{card.title}}" card-type="{{card.type}}" controller-name="{{card.controller}}" card-id="{{card.$id}}"></ir-card>
   </div>
 
 </md-content>

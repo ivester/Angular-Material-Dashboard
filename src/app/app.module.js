@@ -14,8 +14,9 @@
       'app.core',
       'app.auth',
       'app.global',
+      'app.toolbar',
       'app.dashboard',
-      'app.toolbar'
+      'app.card'
     ])
     .config(configFunction)
     .run(runFunction);
@@ -26,7 +27,10 @@
     $mdThemingProvider.theme('default')
       .primaryPalette('brown')
       .accentPalette('blue');
-    $mdIconProvider.icon("menu", "./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg", 24);
+    $mdIconProvider
+      .icon("menu", "./bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg", 24)
+      .icon("delete", "./bower_components/material-design-icons/action/svg/production/ic_delete_24px.svg", 24)
+      .icon("more-vert", "./bower_components/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg", 24);
     $routeProvider.otherwise({
       redirectTo: '/'
     });

@@ -1,0 +1,32 @@
+<md-card>
+
+  <md-card-header layout="row" layout-align="start center">
+    <md-card-header-text>
+      <span class="md-title">{{vm.cardTitle}}</span>
+    </md-card-header-text>
+    <md-button class="md-icon-button">
+      <md-icon md-svg-icon="more-vert"></md-icon>
+    </md-button>
+  </md-card-header>
+
+  <md-card-actions>
+    <div layout="row" layout-align="start center">
+      <md-button flex class="md-raised md-accent" ng-click="vm.addTask('title')">
+        Add Task
+      </md-button>
+    </div>
+  </md-card-actions>
+
+  <md-card-content>
+    <ul class="task-list">
+      <li layout="row" layout-align="start center" ng-repeat="task in vm.tasks">
+        <md-checkbox class="temp-no-margin"></md-checkbox>
+        <span flex>{{task.title}}</span>
+        <md-button class="md-icon-button">
+          <md-icon md-svg-icon="delete"></md-icon>
+        </md-button>
+      </li>
+    </ul>
+  </md-card-content>
+
+</md-card>

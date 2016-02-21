@@ -5,23 +5,22 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$rootScope', 'user', 'widgetService'];
+  DashboardController.$inject = ['$rootScope', 'user', 'cardsService'];
 
-  function DashboardController($rootScope, user, widgetService) {
+  function DashboardController($rootScope, user, cardsService) {
     var vm = this;
 
-    vm.widget = widgetService.getWidgetByUser(user.uid);
+    cardsService.saveUidLocal(user.uid);
 
+    vm.cards = cardsService.getCards(user.uid);
 
-    vm.addWidget = function () {
-      vm.widget.$add(vm.newWidget);
-      vm.newWidget = new widgetService.Widget();
+    vm.addCard = function (type) {
+      vm.cards.$add({title: type, type: type});
     };
 
-    vm.addWidget();
-
-    $rootScope.$on('iv-logout', function () {
-      vm.widget.$destroy();
+    $rootScope.$on('ir-logout', function () {
+      vm.cards.$destroy();
+      cardsService.removeUidLocal();
     });
   }
 })();

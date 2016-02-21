@@ -31,7 +31,7 @@
 
     function logout() {
       firebaseAuthObject.$unauth();
-      $rootScope.$broadcast('iv-logout');
+      $rootScope.$broadcast('ir-logout');
     }
   }
 })();

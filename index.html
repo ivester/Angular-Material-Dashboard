@@ -14,7 +14,7 @@
   ng-hide="global.hideNav()"
   ng-controller="ToolbarController as vm"
   ng-cloak>
-  <md-button hide-gt-sm ng-click="vm.toggleSidenav()">
+  <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
   <md-button class="button-style-temp" ng-click="vm.logout()">Logout</md-button>
@@ -51,8 +51,8 @@
 <!-- Core Module -->
 <script src="src/app/core/core.module.js"></script>
 <script src="src/app/core/constants.js"></script>
-<script src="src/app/core/firebaseData.service.js"></script>
-<script src="src/app/core/widget.service.js"></script>
+<script src="src/app/core/firebase-data.service.js"></script>
+<script src="src/app/core/cards.service.js"></script>
 
 <!-- Auth Module -->
 <script src="src/app/auth/auth.module.js"></script>
@@ -65,13 +65,18 @@
 <script src="src/app/global/global.controller.js"></script>
 <script src="src/app/global/background.directive.js"></script>
 
+<!-- Toolbar Module -->
+<script src="src/app/toolbar/toolbar.module.js"></script>
+<script src="src/app/toolbar/toolbar.controller.js"></script>
+
 <!-- Dashboard Module -->
 <script src="src/app/dashboard/dashboard.module.js"></script>
 <script src="src/app/dashboard/config.route.js"></script>
 <script src="src/app/dashboard/dashboard.controller.js"></script>
 
-<!-- Toolbar Module -->
-<script src="src/app/toolbar/toolbar.module.js"></script>
-<script src="src/app/toolbar/toolbar.controller.js"></script>
+<!-- Card Module -->
+<script src="src/app/card/card.module.js"></script>
+<script src="src/app/card/card.directive.js"></script>
+
 </body>
 </html>
