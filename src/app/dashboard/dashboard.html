@@ -9,7 +9,8 @@
   </div>
 
   <div ng-repeat="card in vm.cards" flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
-    <ir-card card-title="{{card.title}}" card-type="{{card.type}}" controller-name="{{card.controller}}" card-id="{{card.$id}}"></ir-card>
+    <ir-card-task ng-if="card.type === 'task'" card-title="{{card.title}}" card-id="{{card.$id}}"></ir-card-task>
+    <ir-card-weather ng-if="card.type === 'weather'" card-title="{{card.title}}" card-id="{{card.$id}}"></ir-card-weather>
   </div>
 
 </md-content>

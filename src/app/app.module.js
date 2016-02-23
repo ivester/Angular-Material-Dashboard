@@ -16,7 +16,8 @@
       'app.global',
       'app.toolbar',
       'app.dashboard',
-      'app.card'
+      'app.cardTask',
+      'app.cardWeather'
     ])
     .config(configFunction)
     .run(runFunction);
