@@ -1,17 +1,46 @@
-<md-card ng->
+<md-card>
 
   <md-card-header layout="row" layout-align="start center">
     <md-card-header-text>
       <span class="md-title">{{vm.cardTitle}}</span>
     </md-card-header-text>
-    <md-button class="md-icon-button">
-      <md-icon md-svg-icon="more-vert"></md-icon>
-    </md-button>
+    <md-menu>
+      <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+        <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button ng-click="vm.taskStatus = 'all'">
+            <md-icon md-svg-icon="filter-list" md-menu-align-target></md-icon>
+            Show ALL tasks
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="vm.taskStatus = 'open'">
+            <md-icon md-svg-icon="filter-list"></md-icon>
+            Show OPEN tasks
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="vm.taskStatus = 'closed'">
+            <md-icon md-svg-icon="filter-list"></md-icon>
+            Show CLOSED tasks
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="vm.removeClosedTasks()">
+            <md-icon md-svg-icon="delete"></md-icon>
+            Remove closed tasks
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
   </md-card-header>
 
   <md-card-actions>
     <div layout="row" layout-align="start center">
-      <md-button flex class="md-raised md-accent" ng-click="vm.showAddTask($event)">
+      <!--TODO - Chose better class names-->
+      <md-button class="md-raised md-accent card-task-dialog-add" flex ng-click="vm.showEditTask('', false)" aria-label="task-add">
         Add Task
       </md-button>
     </div>
@@ -19,10 +48,10 @@
 
   <md-card-content>
     <ul class="task-list">
-      <li layout="row" layout-align="start center" ng-repeat="task in vm.tasks">
-        <md-checkbox class="temp-no-margin"></md-checkbox>
-        <span flex>{{task.title}}</span>
-        <md-button class="md-icon-button">
+      <li layout="row" layout-align="start center" ng-repeat="task in vm.tasks | taskFilter:vm.taskStatus">
+        <md-checkbox class="temp-no-margin" ng-model="task.check" ng-change="vm.saveTask(task)" aria-label="task-checkbox"></md-checkbox>
+        <label ng-click="vm.showEditTask(task, true)" flex>{{task.title}}</label>
+        <md-button class="md-icon-button" ng-click="vm.removeTask(task)" aria-label="task-edit">
           <md-icon md-svg-icon="delete"></md-icon>
         </md-button>
       </li>

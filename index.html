@@ -14,10 +14,10 @@
   ng-hide="global.hideNav()"
   ng-controller="ToolbarController as vm"
   ng-cloak>
-  <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()">
+  <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
-  <md-button class="button-style-temp" ng-click="vm.logout()">Logout</md-button>
+  <md-button class="button-style-temp" ng-click="vm.logout()" aria-label="logout-button">Logout</md-button>
 </md-toolbar>
 
 <div flex layout="row">
@@ -77,6 +77,7 @@
 <!-- Card Task Module -->
 <script src="src/app/card-task/card-task.module.js"></script>
 <script src="src/app/card-task/card-task.directive.js"></script>
+<script src="src/app/card-task/card-task.filter.js"></script>
 
 <!-- Card Weather Module -->
 <script src="src/app/card-weather/card-weather.module.js"></script>

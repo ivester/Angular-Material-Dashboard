@@ -19,42 +19,87 @@
     }
   }
 
-  cardController.$inject = ['$scope', '$mdDialog', 'cardsService'];
+  cardController.$inject = ['$mdDialog', 'cardsService'];
 
-  function cardController($scope, $mdDialog, cardsService) {
+  function cardController($mdDialog, cardsService) {
     var vm = this;
 
+    vm.taskStatus = 'all';
     vm.tasks = cardsService.getTask(vm.cardId);
 
-    //vm.addTask = function (title) {
-    //  vm.tasks.$add({title: title, done: false});
-    //};
-
-    vm.showAddTask = function(ev) {
-      $mdDialog.show({
-          controller: DialogController,
-          templateUrl: 'src/app/card-task/card-task-dialog-add.html',
-          parent: angular.element(document.body),
-          targetEvent: ev,
-          clickOutsideToClose:true
-        })
-        .then(function(answer) {
-          vm.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          vm.status = 'You cancelled the dialog.';
+    vm.addTask = function (title) {
+      vm.tasks.$add({title: title, check: false})
+        .then(function() {
+          console.log('has been added');
         });
     };
 
-    function DialogController($scope, $mdDialog) {
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-      $scope.cancel = function() {
+    vm.saveTask = function (task) {
+      vm.tasks.$save(task)
+        .then(function(){
+          console.log('has been saved');
+        });
+    };
+
+    vm.removeTask = function(task) {
+      vm.tasks.$remove(task)
+        .then(function(){
+          console.log('has been removed');
+        });
+    };
+
+    vm.removeClosedTasks = function() {
+      var taskIndex;
+
+      for(taskIndex = 0; taskIndex < vm.tasks.length; taskIndex++) {
+        if(vm.tasks[taskIndex].check === true) {
+          vm.removeTask(vm.tasks[taskIndex]);
+        }
+      }
+    };
+
+    vm.showEditTask = function(taskRef, editMode) {
+      $mdDialog.show({
+          locals: {
+            taskRef: taskRef,
+            editMode: editMode
+          },
+          controller: DialogController,
+          controllerAs: 'vm',
+          templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose: true,
+          closeTo: '.card-task-dialog-add'
+        })
+        .then(function(returnObject) {
+          if(returnObject.editMode === true) {
+            taskRef.title = returnObject.taskTitle;
+            vm.saveTask(taskRef);
+          } else {
+            vm.addTask(returnObject.taskTitle);
+          }
+        });
+    };
+
+    //TODO can I put this controller into a seperate file
+    function DialogController($mdDialog, taskRef, editMode) {
+      var vm = this;
+
+      vm.taskRef = taskRef;
+      vm.taskTitle = taskRef.title || '';
+      vm.editMode = editMode;
+
+      vm.cancel = function() {
         $mdDialog.cancel();
       };
-      $scope.answer = function(answer) {
-        $mdDialog.hide(answer);
-      };
+
+      vm.saveTask = function(taskTitle, editMode) {
+        var returnObject = {
+          taskTitle: taskTitle,
+          editMode: editMode
+        };
+        $mdDialog.hide(returnObject);
+      }
     }
   }
 })();

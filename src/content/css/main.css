@@ -10814,6 +10814,11 @@ md-content {
   list-style: none;
   margin: 0;
   padding: 0; }
+  .task-list label {
+    min-height: 19px;
+    cursor: pointer; }
+  .task-list .md-checked + label {
+    text-decoration: line-through; }
 
 .temp-no-margin {
   margin: 0; }
