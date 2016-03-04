@@ -13,7 +13,6 @@
       bindToController: true,
       templateUrl: 'src/app/card-weather/card-weather.html',
       scope: {
-        cardTitle: '@',
         cardId: '@'
       }
     }
@@ -24,6 +23,6 @@
   function cardController(cardsService) {
     var vm = this;
 
-    vm.tasks = cardsService.getTask(vm.cardId);
+    vm.card = cardsService.getCard(vm.cardId);
   }
 })();

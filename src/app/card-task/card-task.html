@@ -1,17 +1,25 @@
 <md-card>
 
   <md-card-header layout="row" layout-align="start center">
+
     <md-card-header-text>
-      <span class="md-title">{{vm.cardTitle}}</span>
+      <span class="md-title">{{vm.card.title}}</span>
     </md-card-header-text>
+
     <md-menu>
       <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
         <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>
       </md-button>
       <md-menu-content width="4">
         <md-menu-item>
+          <md-button class="dialog-card-title--js" ng-click="vm.showEditCardTitle(vm.card.title)">
+            <md-icon md-svg-icon="edit" md-menu-align-target></md-icon>
+            Edit Task Title
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
           <md-button ng-click="vm.taskStatus = 'all'">
-            <md-icon md-svg-icon="filter-list" md-menu-align-target></md-icon>
+            <md-icon md-svg-icon="filter-list"></md-icon>
             Show ALL tasks
           </md-button>
         </md-menu-item>
@@ -35,18 +43,20 @@
         </md-menu-item>
       </md-menu-content>
     </md-menu>
+
   </md-card-header>
 
   <md-card-actions>
     <div layout="row" layout-align="start center">
       <!--TODO - Chose better class names-->
-      <md-button class="md-raised md-accent card-task-dialog-add" flex ng-click="vm.showEditTask('', false)" aria-label="task-add">
+      <md-button class="md-raised md-accent dialog-task-title--js" flex ng-click="vm.showEditTask('', false)" aria-label="task-add">
         Add Task
       </md-button>
     </div>
   </md-card-actions>
 
   <md-card-content>
+    <span class="md-subhead">Showing <span class="filter-status">{{vm.taskStatus}}</span> tasks</span>
     <ul class="task-list">
       <li layout="row" layout-align="start center" ng-repeat="task in vm.tasks | taskFilter:vm.taskStatus">
         <md-checkbox class="temp-no-margin" ng-model="task.check" ng-change="vm.saveTask(task)" aria-label="task-checkbox"></md-checkbox>

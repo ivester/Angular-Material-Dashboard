@@ -10826,6 +10826,9 @@ md-content {
 .button-style-temp {
   margin-left: auto; }
 
+.filter-status {
+  text-transform: uppercase; }
+
 .background-image-full {
   background-repeat: no-repeat;
   background-position: center center;

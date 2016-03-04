@@ -13,7 +13,6 @@
       bindToController: true,
       templateUrl: 'src/app/card-task/card-task.html',
       scope: {
-        cardTitle: '@',
         cardId: '@'
       }
     }
@@ -24,8 +23,47 @@
   function cardController($mdDialog, cardsService) {
     var vm = this;
 
+    vm.card = cardsService.getCard(vm.cardId);
+    vm.tasks = cardsService.getTasks(vm.cardId);
     vm.taskStatus = 'all';
-    vm.tasks = cardsService.getTask(vm.cardId);
+
+    vm.showEditCardTitle = function(cardTitle) {
+      $mdDialog.show({
+          locals: {
+            cardTitle: cardTitle
+          },
+          controller: CardTitleDialogController,
+          controllerAs: 'vm',
+          templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
+          parent: angular.element(document.body),
+          clickOutsideToClose: true,
+          closeTo: '.dialog-card-title--js'
+        })
+        .then(function(returnString) {
+          vm.card.title = returnString;
+          vm.card.$save()
+            .then(function(){
+              console.log('has been saved');
+            });
+        });
+    };
+
+    //TODO can I put this controller into a seperate file
+    function CardTitleDialogController($mdDialog, cardTitle) {
+      var vm = this;
+
+      vm.title = cardTitle || '';
+      vm.editMode = true;
+      vm.false = true;
+
+      vm.cancel = function() {
+        $mdDialog.cancel();
+      };
+
+      vm.save = function(title) {
+        $mdDialog.hide(title);
+      }
+    }
 
     vm.addTask = function (title) {
       vm.tasks.$add({title: title, check: false})
@@ -64,12 +102,12 @@
             taskRef: taskRef,
             editMode: editMode
           },
-          controller: DialogController,
+          controller: TaskDialogController,
           controllerAs: 'vm',
           templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
           parent: angular.element(document.body),
           clickOutsideToClose: true,
-          closeTo: '.card-task-dialog-add'
+          closeTo: '.dialog-task-title--js'
         })
         .then(function(returnObject) {
           if(returnObject.editMode === true) {
@@ -82,18 +120,18 @@
     };
 
     //TODO can I put this controller into a seperate file
-    function DialogController($mdDialog, taskRef, editMode) {
+    function TaskDialogController($mdDialog, taskRef, editMode) {
       var vm = this;
 
-      vm.taskRef = taskRef;
-      vm.taskTitle = taskRef.title || '';
+      vm.title = taskRef.title || '';
       vm.editMode = editMode;
+      vm.task = true;
 
       vm.cancel = function() {
         $mdDialog.cancel();
       };
 
-      vm.saveTask = function(taskTitle, editMode) {
+      vm.save = function(taskTitle, editMode) {
         var returnObject = {
           taskTitle: taskTitle,
           editMode: editMode

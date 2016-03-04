@@ -3,9 +3,10 @@
     <md-dialog-content flex="100">
       <div class="md-dialog-content">
         <md-input-container class="md-block">
-          <label>Task</label>
+          <label ng-hide="vm.task">Title</label>
+          <label ng-show="vm.task">Task</label>
           <!-- TODO Auto Focus-->
-          <input type="text" ng-model="vm.taskTitle">
+          <input type="text" ng-model="vm.title">
         </md-input-container>
       </div>
     </md-dialog-content>
@@ -16,10 +17,10 @@
       <!-- TODO Remove space under input -->
       <!-- TODO When creating task, input has to have something in it - so I might make this logic also for when editing task -->
       <!-- TODO Save/add should work on enter-->
-      <md-button class="md-raised md-accent" ng-hide="vm.editMode" ng-click="vm.saveTask(vm.taskTitle, false)">
+      <md-button class="md-raised md-accent" ng-hide="vm.editMode" ng-click="vm.save(vm.title, false)">
         Add
       </md-button>
-      <md-button class="md-raised md-accent" ng-show="vm.editMode" ng-click="vm.saveTask(vm.taskTitle, true)">
+      <md-button class="md-raised md-accent" ng-show="vm.editMode" ng-click="vm.save(vm.title, true)">
         Save
       </md-button>
     </md-dialog-actions>
