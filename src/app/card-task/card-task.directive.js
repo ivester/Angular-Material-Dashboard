@@ -36,8 +36,7 @@
           controllerAs: 'vm',
           templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
           parent: angular.element(document.body),
-          clickOutsideToClose: true,
-          closeTo: '.dialog-card-title--js'
+          clickOutsideToClose: true
         })
         .then(function(returnString) {
           vm.card.title = returnString;
@@ -64,6 +63,10 @@
         $mdDialog.hide(title);
       }
     }
+
+    vm.removeCard = function () {
+      vm.card.$remove();
+    };
 
     vm.addTask = function (title) {
       vm.tasks.$add({title: title, check: false})
@@ -106,8 +109,7 @@
           controllerAs: 'vm',
           templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
           parent: angular.element(document.body),
-          clickOutsideToClose: true,
-          closeTo: '.dialog-task-title--js'
+          clickOutsideToClose: true
         })
         .then(function(returnObject) {
           if(returnObject.editMode === true) {

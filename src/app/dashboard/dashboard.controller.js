@@ -10,12 +10,14 @@
   function DashboardController($rootScope, user, cardsService) {
     var vm = this;
 
+    vm.fabOpen = false;
+
     cardsService.saveUidLocal(user.uid);
 
-    vm.cards = cardsService.getCards(user.uid);
+    vm.cards = cardsService.getCards();
 
-    vm.addCard = function (type) {
-      vm.cards.$add({title: type, type: type});
+    vm.addCard = function (title, type) {
+      vm.cards.$add({title: title, type: type});
     };
 
     $rootScope.$on('ir-logout', function () {

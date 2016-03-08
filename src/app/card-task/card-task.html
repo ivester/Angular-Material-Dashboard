@@ -12,7 +12,7 @@
       </md-button>
       <md-menu-content width="4">
         <md-menu-item>
-          <md-button class="dialog-card-title--js" ng-click="vm.showEditCardTitle(vm.card.title)">
+          <md-button ng-click="vm.showEditCardTitle(vm.card.title)">
             <md-icon md-svg-icon="edit" md-menu-align-target></md-icon>
             Edit Task Title
           </md-button>
@@ -39,6 +39,12 @@
           <md-button ng-click="vm.removeClosedTasks()">
             <md-icon md-svg-icon="delete"></md-icon>
             Remove closed tasks
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="vm.removeCard()">
+            <md-icon md-svg-icon="close"></md-icon>
+            Remove Card
           </md-button>
         </md-menu-item>
       </md-menu-content>

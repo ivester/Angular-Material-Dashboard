@@ -1,16 +1,24 @@
-<md-content flex id="content" layout="row" layout-align="start start" layout-wrap>
-  <div flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
-    <md-card>
-      <md-card-content>
-        <md-button class="md-raised md-primary" ng-click="vm.addCard('task')" aria-label="add-task-card">Add Task Card</md-button>
-        <md-button class="md-raised md-primary" ng-click="vm.addCard('weather')" aria-label="add-weather-card">Add Weather Card</md-button>
-      </md-card-content>
-    </md-card>
-  </div>
-
+<md-content flex id="content" layout="row" layout-align="start start" layout-wrap ng-cloak>
   <div ng-repeat="card in vm.cards" flex-xs flex-sm="50" flex-md="50" flex-gt-md="33">
     <ir-card-task ng-if="card.type === 'task'" card-id="{{card.$id}}"></ir-card-task>
     <ir-card-weather ng-if="card.type === 'weather'" card-id="{{card.$id}}"></ir-card-weather>
   </div>
+
+  <!--TODO change aria label-->
+  <md-fab-speed-dial class="md-fling ir-speed-dial" md-direction="up" md-open="vm.fabOpen">
+    <md-fab-trigger>
+      <md-button aria-label="add" class="md-fab">
+        <md-icon md-svg-src="add"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <md-button aria-label="Add Task Card" class="md-fab md-raised md-mini" ng-click="vm.addCard('Tasks', 'task')">
+        <md-tooltip md-direction="left">
+          Task Card
+        </md-tooltip>
+        <md-icon md-svg-src="tasks" aria-label="Tasks"></md-icon>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
 
 </md-content>
