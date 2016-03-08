@@ -2,6 +2,21 @@
 @import "../../../bower_components/angular-material/angular-material.scss";
 
 //TODO Refactor into BEM, splitup in modules and replace temp class names
+//TODO Make colors work with angularjs color configuration - eg. if the new accent color is red, that all the links turn red
+
+a {
+  color: #448AFF;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -ms-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
+
+  &:hover, &:focus, &:active {
+    color: rgba(66, 123, 235, 0.8);
+  }
+}
 
 md-content {
   z-index: 0;
@@ -42,6 +57,10 @@ md-content {
 md-toolbar .md-menu.button-style-temp {
   margin-left: auto;
   margin-right: 0;
+}
+
+.button-style-temp {
+  margin-left: auto;
 }
 
 .filter-status {

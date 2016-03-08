@@ -1,21 +1,24 @@
-<md-content class="background-image-full" flex id="content" layout="row" layout-align="center center">
+<md-content flex id="content" layout="row" layout-align="center center">
   <ir-background ir-background-image="https://source.unsplash.com/VNseEaTt9w4/1600x900"></ir-background>
 
   <md-card class="md-whiteframe-z1" layout="column" flex-xs="100" flex-sm="50" flex="30" layout-padding>
     <md-card-content>
       <form novalidate>
         <md-input-container class="md-block">
-          <label>email</label>
+          <label>Email</label>
           <!-- TODO Auto focus -->
           <input ng-model="vm.user.email">
         </md-input-container>
         <md-input-container class="md-block">
-          <label>password</label>
+          <label>Password</label>
           <!-- TODO Repeat password -->
           <input type="password" ng-model="vm.user.password">
         </md-input-container>
         <!-- TODO login should work on enter -->
-        <md-button class="md-raised md-primary" ng-click="vm.register(vm.user)">Register</md-button>
+        <section layout="row" layout-align="center center">
+          <a href="#login">Have already an account?</a>
+          <md-button class="md-raised md-primary button-style-temp" ng-click="vm.register(vm.user)">Register</md-button>
+        </section>
       </form>
     </md-card-content>
   </md-card>

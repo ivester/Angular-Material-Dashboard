@@ -17144,6 +17144,17 @@ md-tooltip {
   .hide-print:not(.show-print):not(.show) {
     display: none !important; } }
 
+a {
+  color: #448AFF;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  -ms-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s; }
+  a:hover, a:focus, a:active {
+    color: rgba(66, 123, 235, 0.8); }
+
 md-content {
   z-index: 0; }
 
@@ -17170,6 +17181,9 @@ md-content {
 md-toolbar .md-menu.button-style-temp {
   margin-left: auto;
   margin-right: 0; }
+
+.button-style-temp {
+  margin-left: auto; }
 
 .filter-status {
   text-transform: uppercase; }

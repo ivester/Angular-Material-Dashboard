@@ -40,7 +40,7 @@
       .icon('add', './bower_components/material-design-icons/content/svg/production/ic_add_24px.svg', 24)
       .icon('tasks', './src/content/img/check-square-o.svg', 24);
     $routeProvider.otherwise({
-      redirectTo: '/'
+      redirectTo: '/dashboard'
     });
   }
 
@@ -48,7 +48,7 @@
 
   function runFunction($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function () {
-      $location.path('/');
+      $location.path('/login');
     });
   }
 
