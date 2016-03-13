@@ -31,15 +31,7 @@
 
 <div flex layout="row">
 
-  <md-sidenav
-    class="md-whiteframe-z2"
-    md-is-locked-open="$mdMedia('gt-sm')"
-    md-component-id="left"
-    ng-click="ul.toggleList()"
-    ng-hide="global.hideNav()"
-    ng-cloak>
-    Side nav
-  </md-sidenav>
+  <ir-sidenav></ir-sidenav>
 
   <ng-view flex layout="row"></ng-view>
 
@@ -53,6 +45,7 @@
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/js-md5/js/md5.js"></script>
 
 <!-- Main App Module -->
 <script src="src/app/app.module.js"></script>
@@ -72,11 +65,16 @@
 <!-- Global Module -->
 <script src="src/app/global/global.module.js"></script>
 <script src="src/app/global/global.controller.js"></script>
-<script src="src/app/global/background.directive.js"></script>
+<script src="src/app/core/background.directive.js"></script>
+<script src="src/app/core/avatar.directive.js"></script>
 
 <!-- Toolbar Module -->
 <script src="src/app/toolbar/toolbar.module.js"></script>
 <script src="src/app/toolbar/toolbar.controller.js"></script>
+
+<!-- Sidenav Module -->
+<script src="src/app/sidenav/sidenav.module.js"></script>
+<script src="src/app/sidenav/sidenav.directive.js"></script>
 
 <!-- Dashboard Module -->
 <script src="src/app/dashboard/dashboard.module.js"></script>

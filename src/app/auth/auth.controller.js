@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
 
-  AuthController.$inject = ['authService', '$location'];
+  AuthController.$inject = ['$rootScope', 'authService', '$location'];
 
-  function AuthController(authService, $location) {
+  function AuthController($rootScope, authService, $location) {
     var vm = this;
 
     vm.register = register;
@@ -27,8 +27,8 @@
     function login(user) {
       return authService.login(user)
         .then(function (response) {
+          $rootScope.$broadcast('ir-login');
           $location.path('/dashboard');
-          console.log(response);
           return response;
         })
         .catch(function (error) {

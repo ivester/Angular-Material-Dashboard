@@ -17145,7 +17145,7 @@ md-tooltip {
     display: none !important; } }
 
 a {
-  color: #448AFF;
+  color: #795548;
   text-decoration: none;
   -webkit-transition: color 0.2s;
   -moz-transition: color 0.2s;
@@ -17153,7 +17153,31 @@ a {
   -o-transition: color 0.2s;
   transition: color 0.2s; }
   a:hover, a:focus, a:active {
-    color: rgba(66, 123, 235, 0.8); }
+    color: #4b352b; }
+
+.profile-image {
+  display: block;
+  width: 100%;
+  padding: 3rem 3rem 0 3rem; }
+  .profile-image div {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #795548; }
+    .profile-image div img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      -webkit-animation-name: fade-in;
+      -webkit-animation-duration: 0.5s;
+      -webkit-animation-timing-function: ease-in;
+      -webkit-animation-iteration-count: 1;
+      -webkit-animation-delay: 0s; }
 
 md-content {
   z-index: 0; }

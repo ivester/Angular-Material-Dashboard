@@ -15,6 +15,7 @@
       'app.auth',
       'app.global',
       'app.toolbar',
+      'app.sidenav',
       'app.dashboard',
       'app.cardTask',
       'app.cardWeather'
@@ -38,7 +39,7 @@
       .icon('delete', './bower_components/material-design-icons/action/svg/production/ic_delete_24px.svg', 24)
       .icon('edit', './bower_components/material-design-icons/image/svg/production/ic_edit_24px.svg', 24)
       .icon('add', './bower_components/material-design-icons/content/svg/production/ic_add_24px.svg', 24)
-      .icon('tasks', './src/content/img/check-square-o.svg', 24);
+      .icon('assignment', './bower_components/material-design-icons/action/svg/production/ic_assignment_24px.svg', 24);
     $routeProvider.otherwise({
       redirectTo: '/dashboard'
     });
