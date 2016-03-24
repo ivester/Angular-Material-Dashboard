@@ -18,24 +18,6 @@
           </md-button>
         </md-menu-item>
         <md-menu-item>
-          <md-button ng-click="vm.taskStatus = 'all'">
-            <md-icon md-svg-icon="filter-list"></md-icon>
-            Show ALL tasks
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-click="vm.taskStatus = 'open'">
-            <md-icon md-svg-icon="filter-list"></md-icon>
-            Show OPEN tasks
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-click="vm.taskStatus = 'closed'">
-            <md-icon md-svg-icon="filter-list"></md-icon>
-            Show CLOSED tasks
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
           <md-button ng-click="vm.removeClosedTasks()">
             <md-icon md-svg-icon="delete"></md-icon>
             Remove closed tasks
@@ -54,7 +36,6 @@
 
   <md-card-actions>
     <div layout="row" layout-align="start center">
-      <!--TODO - Chose better class names-->
       <md-button class="md-raised md-accent dialog-task-title--js" flex ng-click="vm.showEditTask('', false)" aria-label="task-add">
         Add Task
       </md-button>
@@ -62,9 +43,9 @@
   </md-card-actions>
 
   <md-card-content>
-    <span class="md-subhead">Showing <span class="filter-status">{{vm.taskStatus}}</span> tasks</span>
-    <ul class="task-list">
-      <li layout="row" layout-align="start center" ng-repeat="task in vm.tasks | taskFilter:vm.taskStatus">
+    <ul class="task-list task-list--js">
+      <li layout="row" layout-align="start center" ir-task-id="{{task.$id}}" ng-repeat="task in vm.tasks | taskFilterOrder:vm.card.taskIndex">
+        <md-icon class="drag-handle--js drag-handle" md-svg-icon="drag-handle"></md-icon>
         <md-checkbox class="temp-no-margin" ng-model="task.check" ng-change="vm.saveTask(task)" aria-label="task-checkbox"></md-checkbox>
         <label ng-click="vm.showEditTask(task, true)" flex>{{task.title}}</label>
         <md-button class="md-icon-button" ng-click="vm.removeTask(task)" aria-label="task-edit">

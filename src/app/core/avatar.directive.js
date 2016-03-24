@@ -35,6 +35,7 @@
   }
 
   function irAvatarLink(scope) {
+    //get gravatar profil image and fade it in when loaded
     scope.$watch('hash', function() {
       var imagePlaceholder = document.createElement('div');
       var imageUrl = 'http://www.gravatar.com/avatar/' + scope.hash;

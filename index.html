@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Angular Material Dashboard</title>
+  <!--TODO put css into main sass-->
+  <link rel="stylesheet" href="bower_components/dragular/dist/dragular.css">
   <link rel="stylesheet" href="src/content/css/main.css">
   <style>[ng-cloak] { display: none; }</style>
 </head>
@@ -46,6 +48,7 @@
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.js"></script>
 <script src="bower_components/js-md5/js/md5.js"></script>
+<script src="bower_components/dragular/dist/dragular.js"></script>
 
 <!-- Main App Module -->
 <script src="src/app/app.module.js"></script>
@@ -84,7 +87,7 @@
 <!-- Card Task Module -->
 <script src="src/app/card-task/card-task.module.js"></script>
 <script src="src/app/card-task/card-task.directive.js"></script>
-<script src="src/app/card-task/card-task.filter.js"></script>
+<script src="src/app/card-task/card-task.filter-order.js"></script>
 
 <!-- Card Weather Module -->
 <script src="src/app/card-weather/card-weather.module.js"></script>

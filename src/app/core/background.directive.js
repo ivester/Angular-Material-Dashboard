@@ -13,6 +13,7 @@
   }
 
   function irBackgroundLink(scope, elem, attrs) {
+    //Fade in background image when image is loaded
     var imageUrl = attrs.irBackgroundImage;
     var image = document.createElement('img');
 

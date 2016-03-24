@@ -68,6 +68,11 @@ md-content {
   .md-checked + label {
     text-decoration: line-through;
   }
+
+  .drag-handle {
+    margin-right: 10px;
+    cursor: pointer;
+  }
 }
 
 .temp-no-margin {
@@ -93,10 +98,6 @@ md-toolbar .md-menu.button-style-temp {
 
 .button-style-temp {
   margin-left: auto;
-}
-
-.filter-status {
-  text-transform: uppercase;
 }
 
 .background-image-full {
@@ -126,10 +127,6 @@ md-toolbar .md-menu.button-style-temp {
 .md-whiteframe-z1 {
   background-color: white;
 }
-
-//.no-padding {
-//  padding: 0;
-//}
 
 @-webkit-keyframes fade-in {
   0%   { opacity: 0; }

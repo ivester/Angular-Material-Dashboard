@@ -12,15 +12,43 @@
       controllerAs: 'vm',
       bindToController: true,
       templateUrl: 'src/app/card-task/card-task.html',
+      link: cardLink,
       scope: {
         cardId: '@'
       }
     }
   }
 
-  cardController.$inject = ['$mdDialog', 'cardsService'];
+  function cardLink(scope, elem) {
+    var tasks = [];
 
-  function cardController($mdDialog, cardsService) {
+    scope.$on('dragulardrop', updateTaskIndex());
+
+    function updateTaskIndex() {
+      return function() {
+        var task, taskKey, newTaskIndex,
+          taskIdAndIndex = [];
+
+        tasks = elem[0].querySelector('.task-list--js').querySelectorAll('li');
+
+        for (newTaskIndex = 0; newTaskIndex < tasks.length; newTaskIndex++) {
+          taskKey = tasks[newTaskIndex].getAttribute('ir-task-id');
+          taskIdAndIndex.push({
+            'key': taskKey,
+            'index': tasks.length - 1 - newTaskIndex
+          });
+        }
+
+        scope.vm.card.taskIndex = taskIdAndIndex;
+
+        scope.vm.card.$save();
+      };
+    }
+  }
+
+  cardController.$inject = ['$scope', '$mdDialog', '$element', 'dragularService', 'cardsService'];
+
+  function cardController($scope, $mdDialog, $element, dragularService, cardsService) {
     var vm = this;
 
     vm.card = cardsService.getCard(vm.cardId);
@@ -40,10 +68,7 @@
         })
         .then(function(returnString) {
           vm.card.title = returnString;
-          vm.card.$save()
-            .then(function(){
-              console.log('has been saved');
-            });
+          vm.card.$save();
         });
     };
 
@@ -64,30 +89,57 @@
       }
     }
 
+    dragularService([$element[0].querySelector('.task-list--js')], {
+      moves: function (el, container, handle) {
+        return handle.querySelector('.drag-handle--js svg') !== null;
+      },
+      nameSpace: 'task-list-' + vm.cardId,
+      scope: $scope
+    });
+
     vm.removeCard = function () {
       vm.card.$remove();
     };
 
     vm.addTask = function (title) {
       vm.tasks.$add({title: title, check: false})
-        .then(function() {
-          console.log('has been added');
+        .then(function(ref) {
+          if(vm.card.taskIndex) {
+            vm.card.taskIndex.push({
+              'key': ref.key(),
+              'index': vm.tasks.length - 1
+            });
+            vm.card.$save();
+          } else {
+            vm.card.taskIndex = [{
+              'key': ref.key(),
+              'index': vm.tasks.length - 1
+            }];
+            vm.card.$save();
+          }
         });
     };
 
     vm.saveTask = function (task) {
-      vm.tasks.$save(task)
-        .then(function(){
-          console.log('has been saved');
-        });
+      vm.tasks.$save(task);
     };
 
     vm.removeTask = function(task) {
       vm.tasks.$remove(task)
-        .then(function(){
-          console.log('has been removed');
+        .then(function(ref){
+          vm.card.taskIndex = removeIndex(vm.card.taskIndex, ref.key());
+          vm.card.$save();
         });
     };
+
+    function removeIndex(array, key) {
+      for(var index = 0; index < array.length; index++) {
+        if(array[index].key === key) {
+          array.splice(index, 1);
+          return array;
+        }
+      }
+    }
 
     vm.removeClosedTasks = function() {
       var taskIndex;

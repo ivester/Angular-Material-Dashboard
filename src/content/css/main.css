@@ -17191,6 +17191,9 @@ md-content {
     cursor: pointer; }
   .task-list .md-checked + label {
     text-decoration: line-through; }
+  .task-list .drag-handle {
+    margin-right: 10px;
+    cursor: pointer; }
 
 .temp-no-margin {
   margin: 0; }
@@ -17208,9 +17211,6 @@ md-toolbar .md-menu.button-style-temp {
 
 .button-style-temp {
   margin-left: auto; }
-
-.filter-status {
-  text-transform: uppercase; }
 
 .background-image-full {
   background-repeat: no-repeat;

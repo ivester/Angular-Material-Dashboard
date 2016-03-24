@@ -19,6 +19,6 @@
     "angular-route": "~1.4.9",
     "material-design-icons": "~2.1.3",
     "js-md5": "~2.3.0",
-    "angular-dragula": "~1.2.6"
+    "dragular": "~4.0.1"
   }
 }
