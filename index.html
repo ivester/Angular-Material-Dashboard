@@ -19,16 +19,20 @@
   <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
-  <md-menu class="button-style-temp">
-    <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
-      <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>
-    </md-button>
-    <md-menu-content width="4">
-      <md-menu-item>
-        <md-button ng-click="vm.logout()" aria-label="logout-button">Logout</md-button>
-      </md-menu-item>
-    </md-menu-content>
-  </md-menu>
+  <div class="go-right-temp" layout="row">
+    <md-icon ng-show="false" md-svg-icon="cloud-done"></md-icon>
+    <md-progress-circular  ng-show="global.loadingStatus" class="ir-contrast" md-mode="indeterminate"></md-progress-circular>
+    <md-menu>
+      <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+        <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button ng-click="vm.logout()" aria-label="logout-button">Logout</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
 </md-toolbar>
 
 <div flex layout="row">
@@ -58,6 +62,7 @@
 <script src="src/app/core/constants.js"></script>
 <script src="src/app/core/firebase-data.service.js"></script>
 <script src="src/app/core/cards.service.js"></script>
+<script src="src/app/core/loading-indicator.service.js"></script>
 
 <!-- Auth Module -->
 <script src="src/app/auth/auth.module.js"></script>

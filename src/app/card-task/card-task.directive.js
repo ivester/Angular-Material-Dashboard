@@ -41,19 +41,35 @@
 
         scope.vm.card.taskIndex = taskIdAndIndex;
 
-        scope.vm.card.$save();
+        scope.vm.saveCard();
       };
     }
   }
 
-  cardController.$inject = ['$scope', '$mdDialog', '$element', 'dragularService', 'cardsService'];
+  cardController.$inject = ['$scope', '$mdDialog', '$element', 'dragularService', 'cardsService', 'loadingIndicatorService'];
 
-  function cardController($scope, $mdDialog, $element, dragularService, cardsService) {
+  function cardController($scope, $mdDialog, $element, dragularService, cardsService, loadingIndicatorService) {
     var vm = this;
 
     vm.card = cardsService.getCard(vm.cardId);
     vm.tasks = cardsService.getTasks(vm.cardId);
     vm.taskStatus = 'all';
+
+    //TODO Catch image loading and error - maybe prevent that image load error doesn't break the rest too
+    //TODO Maybe loading timeout that stops everything and throws an error
+    //TODO Catch global error when can't connect to firebase
+    //TODO Toastr message whit further infos to error and possible actions that can be taken
+
+    loadingIndicatorService.addLoading();
+
+    vm.tasks.$loaded()
+      .then(function() {
+        loadingIndicatorService.removeLoading();
+      })
+      .catch(function(error) {
+        loadingIndicatorService.removeLoading();
+        console.error("Error:", error);
+      });
 
     vm.showEditCardTitle = function(cardTitle) {
       $mdDialog.show({
@@ -68,7 +84,11 @@
         })
         .then(function(returnString) {
           vm.card.title = returnString;
-          vm.card.$save();
+          vm.saveCard();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
         });
     };
 
@@ -89,6 +109,7 @@
       }
     }
 
+    //TODO make cards draggable too
     dragularService([$element[0].querySelector('.task-list--js')], {
       moves: function (el, container, handle) {
         return handle.querySelector('.drag-handle--js svg') !== null;
@@ -97,11 +118,32 @@
       scope: $scope
     });
 
+    vm.saveCard = function() {
+      loadingIndicatorService.addLoading();
+      vm.card.$save()
+        .then(function() {
+          loadingIndicatorService.removeLoading();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
+        });
+    };
+
     vm.removeCard = function () {
-      vm.card.$remove();
+      loadingIndicatorService.addLoading();
+      vm.card.$remove()
+        .then(function() {
+          loadingIndicatorService.removeLoading();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
+        });
     };
 
     vm.addTask = function (title) {
+      loadingIndicatorService.addLoading();
       vm.tasks.$add({title: title, check: false})
         .then(function(ref) {
           if(vm.card.taskIndex) {
@@ -109,27 +151,47 @@
               'key': ref.key(),
               'index': vm.tasks.length - 1
             });
-            vm.card.$save();
+            vm.saveCard();
           } else {
             vm.card.taskIndex = [{
               'key': ref.key(),
               'index': vm.tasks.length - 1
             }];
-            vm.card.$save();
+            vm.saveCard();
           }
+          loadingIndicatorService.removeLoading();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
         });
     };
 
     vm.saveTask = function (task) {
-      vm.tasks.$save(task);
+      loadingIndicatorService.addLoading();
+      vm.tasks.$save(task)
+        .then(function() {
+          loadingIndicatorService.removeLoading();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
+        });
     };
 
     vm.removeTask = function(task) {
+      loadingIndicatorService.addLoading();
       vm.tasks.$remove(task)
         .then(function(ref){
+          loadingIndicatorService.removeLoading();
           vm.card.taskIndex = removeIndex(vm.card.taskIndex, ref.key());
-          vm.card.$save();
+          vm.saveCard();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          console.error("Error:", error);
         });
+
     };
 
     function removeIndex(array, key) {

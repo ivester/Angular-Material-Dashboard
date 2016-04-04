@@ -17182,6 +17182,24 @@ a {
 md-content {
   z-index: 0; }
 
+md-progress-circular.ir-contrast .md-inner .md-gap {
+  border-top-color: #FFF;
+  border-bottom-color: #FFF; }
+
+md-progress-circular.ir-contrast .md-inner .md-left .md-half-circle {
+  border-top-color: #FFF;
+  border-left-color: #FFF; }
+
+md-progress-circular.ir-contrast .md-inner .md-right .md-half-circle {
+  border-top-color: #FFF;
+  border-right-color: #FFF; }
+
+.ir-progress-linear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; }
+
 .task-list {
   list-style: none;
   margin: 0;
@@ -17209,7 +17227,7 @@ md-toolbar .md-menu.button-style-temp {
   margin-left: auto;
   margin-right: 0; }
 
-.button-style-temp {
+.button-style-temp, .go-right-temp {
   margin-left: auto; }
 
 .background-image-full {

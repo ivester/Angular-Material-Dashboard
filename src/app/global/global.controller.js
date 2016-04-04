@@ -5,9 +5,9 @@
     .module('app.global')
     .controller('GlobalController', GlobalController);
 
-  GlobalController.$inject = ['$location'];
+  GlobalController.$inject = ['$location', '$rootScope','loadingIndicatorService'];
 
-  function GlobalController($location) {
+  function GlobalController($location, $rootScope, loadingIndicatorService) {
     var vm = this,
       path = '';
 
@@ -19,5 +19,11 @@
         return false;
       }
     };
+
+    vm.loadingStatus = true;
+
+    $rootScope.$on('ir-update-loading-status', function() {
+      vm.loadingStatus = loadingIndicatorService.getLoadingStatus();
+    });
   }
 })();
