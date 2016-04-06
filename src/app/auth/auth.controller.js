@@ -25,6 +25,7 @@
         .catch(function (error) {
           vm.error = error;
           loadingIndicatorService.removeLogin();
+          vm.loginStatus = loadingIndicatorService.getLoginStatus();
           console.log(error);
         });
     }
@@ -43,6 +44,7 @@
         .catch(function (error) {
           vm.error = error;
           loadingIndicatorService.removeLogin();
+          vm.loginStatus = loadingIndicatorService.getLoginStatus();
           console.log(error);
         });
     }

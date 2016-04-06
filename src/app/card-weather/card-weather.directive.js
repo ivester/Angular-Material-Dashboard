@@ -18,11 +18,7 @@
     }
   }
 
-  cardController.$inject = ['cardsService'];
+  cardController.$inject = [];
 
-  function cardController(cardsService) {
-    var vm = this;
-
-    vm.card = cardsService.getCard(vm.cardId);
-  }
+  function cardController() {}
 })();

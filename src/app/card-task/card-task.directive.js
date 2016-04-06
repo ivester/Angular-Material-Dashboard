@@ -46,14 +46,31 @@
     }
   }
 
-  cardController.$inject = ['$scope', '$mdDialog', '$element', 'dragularService', 'cardsService', 'loadingIndicatorService'];
+  cardController.$inject = ['$scope', '$rootScope', '$mdDialog', '$element', 'dragularService', 'cardsService', 'loadingIndicatorService'];
 
-  function cardController($scope, $mdDialog, $element, dragularService, cardsService, loadingIndicatorService) {
+  function cardController($scope, $rootScope, $mdDialog, $element, dragularService, cardsService, loadingIndicatorService) {
     var vm = this;
+        vm.card = null;
+        vm.tasks = null;
 
-    vm.card = cardsService.getCard(vm.cardId);
-    vm.tasks = cardsService.getTasks(vm.cardId);
-    vm.taskStatus = 'all';
+
+    if(!vm.card) {
+      vm.card = cardsService.getCard(vm.cardId);
+    }
+    if(!vm.tasks) {
+      vm.tasks = cardsService.getTasks(vm.cardId);
+    }
+
+    $rootScope.$on('ir-logout', function () {
+      if(vm.card) {
+        vm.card.$destroy();
+        vm.card = null;
+      }
+      if(vm.tasks) {
+        vm.tasks.$destroy();
+        vm.tasks = null;
+      }
+    });
 
     //TODO Catch image loading and error - maybe prevent that image load error doesn't break the rest too
     //TODO Maybe loading timeout that stops everything and throws an error
