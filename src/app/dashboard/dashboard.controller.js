@@ -5,9 +5,9 @@
     .module('app.dashboard')
     .controller('DashboardController', DashboardController);
 
-  DashboardController.$inject = ['$rootScope', 'user', 'cardsService', 'loadingIndicatorService'];
+  DashboardController.$inject = ['$rootScope', '$mdToast', 'user', 'cardsService', 'loadingIndicatorService'];
 
-  function DashboardController($rootScope, user, cardsService, loadingIndicatorService) {
+  function DashboardController($rootScope, $mdToast, user, cardsService, loadingIndicatorService) {
     var vm = this;
         vm.cards = null;
 
@@ -35,6 +35,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };

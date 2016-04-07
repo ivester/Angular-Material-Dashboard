@@ -46,9 +46,9 @@
     }
   }
 
-  cardController.$inject = ['$scope', '$rootScope', '$mdDialog', '$element', 'dragularService', 'cardsService', 'loadingIndicatorService'];
+  cardController.$inject = ['$scope', '$rootScope', '$element', '$mdDialog', '$mdToast', 'dragularService', 'cardsService', 'loadingIndicatorService'];
 
-  function cardController($scope, $rootScope, $mdDialog, $element, dragularService, cardsService, loadingIndicatorService) {
+  function cardController($scope, $rootScope, $element, $mdDialog, $mdToast, dragularService, cardsService, loadingIndicatorService) {
     var vm = this;
         vm.card = null;
         vm.tasks = null;
@@ -85,6 +85,12 @@
       })
       .catch(function(error) {
         loadingIndicatorService.removeLoading();
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent(error.message)
+            .position('top left')
+            .hideDelay(6000)
+        );
         console.error("Error:", error);
       });
 
@@ -105,6 +111,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };
@@ -143,6 +155,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };
@@ -155,6 +173,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };
@@ -180,6 +204,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };
@@ -192,6 +222,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
     };
@@ -206,6 +242,12 @@
         })
         .catch(function(error) {
           loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
           console.error("Error:", error);
         });
 

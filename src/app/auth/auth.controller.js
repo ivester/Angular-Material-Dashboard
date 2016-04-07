@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
 
-  AuthController.$inject = ['$rootScope', '$location', 'authService', 'loadingIndicatorService'];
+  AuthController.$inject = ['$rootScope', '$location', '$mdToast', 'authService', 'loadingIndicatorService'];
 
-  function AuthController($rootScope, $location, authService, loadingIndicatorService) {
+  function AuthController($rootScope, $location, $mdToast, authService, loadingIndicatorService) {
     var vm = this;
 
     vm.register = register;
@@ -26,7 +26,13 @@
           vm.error = error;
           loadingIndicatorService.removeLogin();
           vm.loginStatus = loadingIndicatorService.getLoginStatus();
-          console.log(error);
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
+          console.error("Error:", error);
         });
     }
 
@@ -45,7 +51,13 @@
           vm.error = error;
           loadingIndicatorService.removeLogin();
           vm.loginStatus = loadingIndicatorService.getLoginStatus();
-          console.log(error);
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
+          console.error("Error:", error);
         });
     }
   }
