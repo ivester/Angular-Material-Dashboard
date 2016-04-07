@@ -1,24 +1,30 @@
-<md-content flex id="content" layout="row" layout-align="center center">
+<md-content class="ir-auth" flex id="content" layout="row" layout-align="center center">
   <ir-background ir-background-image="https://source.unsplash.com/VNseEaTt9w4/1600x900"></ir-background>
   <md-progress-linear class="ir-progress-linear" ng-show="vm.loginStatus" md-mode="indeterminate"></md-progress-linear>
 
-  <md-card class="md-whiteframe-z1" layout="column" flex-xs="100" flex-sm="50" flex="30" layout-padding>
+  <md-card class="md-whiteframe-z1" layout="column" flex="100" flex-sm="60" flex-gt-sm="40" layout-padding>
     <md-card-content>
-      <form novalidate>
+      <form name="registerForm">
         <md-input-container class="md-block">
-          <label>Email</label>
+          <label>User Name</label>
           <!-- TODO Auto focus -->
-          <input ng-model="vm.user.email">
+          <input name="email" ng-model="vm.user.email" required>
+          <div ng-messages="registerForm.email.$error">
+            <div ng-message="required">User name is required</div>
+          </div>
         </md-input-container>
         <md-input-container class="md-block">
           <label>Password</label>
           <!-- TODO Repeat password -->
-          <input type="password" ng-model="vm.user.password">
+          <input name="password" type="password" ng-model="vm.user.password" multiple minlength="6" required>
+          <div ng-messages="registerForm.password.$error">
+            <div ng-message-exp="['required', 'minlength']">Please provide a password that consist of min. 6 characters</div>
+          </div>
         </md-input-container>
         <!-- TODO login should work on enter -->
         <section layout="row" layout-align="center center">
           <a href="#login">Have already an account?</a>
-          <md-button class="md-raised md-primary button-style-temp" ng-click="vm.register(vm.user)">Register</md-button>
+          <md-button class="md-raised md-primary button-style-temp" ng-click="vm.register(vm.user)" ng-disabled="registerForm.$invalid">Register</md-button>
         </section>
       </form>
     </md-card-content>

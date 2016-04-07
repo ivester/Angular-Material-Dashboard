@@ -5,9 +5,9 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
 
-  AuthController.$inject = ['$rootScope', 'authService', '$location', 'loadingIndicatorService'];
+  AuthController.$inject = ['$rootScope', '$location', 'authService', 'loadingIndicatorService'];
 
-  function AuthController($rootScope, authService, $location, loadingIndicatorService) {
+  function AuthController($rootScope, $location, authService, loadingIndicatorService) {
     var vm = this;
 
     vm.register = register;

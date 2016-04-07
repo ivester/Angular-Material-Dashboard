@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Angular Material Dashboard</title>
   <!--TODO put css into main sass-->
   <link rel="stylesheet" href="bower_components/dragular/dist/dragular.css">
@@ -20,7 +21,6 @@
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
   <div class="go-right-temp" layout="row">
-    <md-icon ng-show="false" md-svg-icon="cloud-done"></md-icon>
     <md-progress-circular  ng-show="global.loadingStatus" class="ir-contrast" md-mode="indeterminate"></md-progress-circular>
     <md-menu>
       <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
@@ -46,6 +46,7 @@
 <!-- Third-party JS -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>

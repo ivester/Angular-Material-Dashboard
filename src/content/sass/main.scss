@@ -160,6 +160,12 @@ md-toolbar .md-menu.button-style-temp {
   background-color: white;
 }
 
+.ir-auth {
+  md-card {
+    max-width: 500px;
+  }
+}
+
 @-webkit-keyframes fade-in {
   0%   { opacity: 0; }
   100% { opacity: 1; }

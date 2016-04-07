@@ -5,6 +5,7 @@
     .module('app', [
       // Angular Modules
       'ngRoute',
+      'ngMessages',
 
       // Third Party Modules
       'ngMaterial',

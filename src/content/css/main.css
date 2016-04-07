@@ -17253,6 +17253,9 @@ md-toolbar .md-menu.button-style-temp {
 .md-whiteframe-z1 {
   background-color: white; }
 
+.ir-auth md-card {
+  max-width: 500px; }
+
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0; }
