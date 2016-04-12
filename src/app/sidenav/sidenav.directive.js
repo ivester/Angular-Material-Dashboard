@@ -9,7 +9,7 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'src/app/sidenav/sidenav.html',
+      templateUrl: 'app/sidenav/sidenav.html',
       controller: SidenavController,
       controllerAs: 'vm',
       bindController: true

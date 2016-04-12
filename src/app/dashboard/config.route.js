@@ -9,7 +9,7 @@
 
   function configFunction($routeProvider) {
     $routeProvider.when('/dashboard', {
-      templateUrl: 'src/app/dashboard/dashboard.html',
+      templateUrl: 'app/dashboard/dashboard.html',
       controller: 'DashboardController',
       controllerAs: 'vm',
       resolve: {user: resolveUser}

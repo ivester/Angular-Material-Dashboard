@@ -24,5 +24,13 @@
   },
   "resolutions": {
     "angular": "1.x"
+  },
+  "overrides": {
+    "dragular": {
+      "main": "dist/dragular.js"
+    },
+    "material-design-icons": {
+      "ignore": true
+    }
   }
 }

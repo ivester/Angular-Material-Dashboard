@@ -11,7 +11,7 @@
       controller: cardController,
       controllerAs: 'vm',
       bindToController: true,
-      templateUrl: 'src/app/card-task/card-task.html',
+      templateUrl: 'app/card-task/card-task.html',
       link: cardLink,
       scope: {
         cardId: '@'
@@ -101,7 +101,7 @@
           },
           controller: CardTitleDialogController,
           controllerAs: 'vm',
-          templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
+          templateUrl: 'app/card-task/card-task-dialog-edit.html',
           parent: angular.element(document.body),
           clickOutsideToClose: true
         })
@@ -280,7 +280,7 @@
           },
           controller: TaskDialogController,
           controllerAs: 'vm',
-          templateUrl: 'src/app/card-task/card-task-dialog-edit.html',
+          templateUrl: 'app/card-task/card-task-dialog-edit.html',
           parent: angular.element(document.body),
           clickOutsideToClose: true
         })

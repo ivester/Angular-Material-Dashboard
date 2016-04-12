@@ -11,7 +11,7 @@
       controller: cardController,
       controllerAs: 'vm',
       bindToController: true,
-      templateUrl: 'src/app/card-weather/card-weather.html',
+      templateUrl: 'app/card-weather/card-weather.html',
       scope: {
         cardId: '@'
       }

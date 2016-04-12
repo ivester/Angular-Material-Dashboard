@@ -1,25 +1,34 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
+var mainBowerFiles = require('main-bower-files');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
   browserSync.init({
-    server: "./",
+    server: "./src",
     notify: false
   });
 
-  gulp.watch("src/content/sass/*.scss", ['sass']);
-  gulp.watch("./*.html").on('change', browserSync.reload);
+  gulp.watch("src/assets/styles/sass/*.scss", ['sass']);
+  gulp.watch("./src/*.html").on('change', browserSync.reload);
 });
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-  return gulp.src("src/content/sass/*.scss")
+  return gulp.src("src/assets/styles/sass/*.scss")
       .pipe(sass())
-      .pipe(gulp.dest("src/content/css"))
+      .pipe(gulp.dest("src/assets/styles/css"))
       .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['serve']);
+// TODO No more dist folder in output - all flat please
+// TODO Get only js files
+// Get all main files from Bower
+gulp.task('getMainFiles', function() {
+  return gulp.src(mainBowerFiles(), { base: 'bower_components' })
+    .pipe(gulp.dest('src/assets/js/vendor'))
+});
+
+gulp.task('default', ['getMainFiles', 'serve']);

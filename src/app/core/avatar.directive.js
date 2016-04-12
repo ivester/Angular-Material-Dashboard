@@ -9,7 +9,7 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: 'src/app/core/avatar.html',
+      templateUrl: 'app/core/avatar.html',
       controller: AvatarController,
       controllerAs: 'vm',
       bindToController: true,
