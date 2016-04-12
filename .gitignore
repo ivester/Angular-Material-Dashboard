@@ -127,3 +127,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#Custom
+src/assets/js/vendor
+src/assets/styles/css
