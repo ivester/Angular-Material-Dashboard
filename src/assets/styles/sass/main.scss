@@ -25,20 +25,6 @@
 //TODO Refactor into BEM, splitup in modules and replace temp class names
 //TODO Make colors work with angularjs color configuration - eg. if the new accent color is red, that all the links turn red
 
-a {
-  color: #795548;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-  -moz-transition: color 0.2s;
-  -ms-transition: color 0.2s;
-  -o-transition: color 0.2s;
-  transition: color 0.2s;
-
-  &:hover, &:focus, &:active {
-    color: #4b352b;
-  }
-}
-
 //Keep image width 100% and in proportion (image has to be a square)
 //When the image is not loaded, the background is filled with background-color
 .profile-image {
