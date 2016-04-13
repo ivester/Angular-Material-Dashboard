@@ -20,8 +20,10 @@
   <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
-  <div class="go-right-temp" layout="row">
-    <md-progress-circular  ng-show="global.loadingStatus" class="ir-contrast" md-mode="indeterminate"></md-progress-circular>
+  <div class="go-right-temp" layout="row" layout-align="center center">
+    <div class="ir-contrast">
+      <md-progress-circular  ng-show="global.loadingStatus" md-mode="indeterminate" md-diameter="25"></md-progress-circular>
+    </div>
     <md-menu>
       <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
         <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>

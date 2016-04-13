@@ -75,28 +75,12 @@ md-content {
   z-index: 0;
 }
 
-md-progress-circular {
-  &.ir-contrast {
-    .md-inner {
-      .md-gap {
-        border-top-color: #FFF;
-        border-bottom-color: #FFF;
-      }
+.ir-contrast {
+  height: 25px;
+  width: 25px;
 
-      .md-left {
-        .md-half-circle {
-          border-top-color: #FFF;
-          border-left-color: #FFF;
-        }
-      }
-
-      .md-right {
-        .md-half-circle {
-          border-top-color: #FFF;
-          border-right-color: #FFF;
-        }
-      }
-    }
+  path {
+    stroke: #fff;
   }
 }
 
