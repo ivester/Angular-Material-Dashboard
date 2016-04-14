@@ -4,11 +4,10 @@
 
   <md-card class="md-whiteframe-z1" layout="column" flex="100" flex-sm="60" flex-gt-sm="40" layout-padding>
     <md-card-content>
-      <form name="registerForm">
+      <form name="registerForm" ng-submit="vm.register(vm.user)">
         <md-input-container class="md-block">
           <label>User Name</label>
-          <!-- TODO Auto focus -->
-          <input name="email" ng-model="vm.user.email" required>
+          <input name="email" ng-model="vm.user.email" autofocus required>
           <div ng-messages="registerForm.email.$error">
             <div ng-message="required">User name is required</div>
           </div>
@@ -24,7 +23,7 @@
         <!-- TODO login should work on enter -->
         <section layout="row" layout-align="center center">
           <a href="#login">Have already an account?</a>
-          <md-button class="md-raised md-primary button-style-temp" ng-click="vm.register(vm.user)" ng-disabled="registerForm.$invalid">Register</md-button>
+          <md-button class="md-raised md-primary button-style-temp" type="submit" ng-disabled="registerForm.$invalid">Register</md-button>
         </section>
       </form>
     </md-card-content>

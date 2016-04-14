@@ -1,12 +1,11 @@
 <md-dialog ng-cloak flex-xs="100" flex-sm="80" flex="60">
-  <form layout="column">
+  <form layout="column" ng-submit="vm.save(vm.title, vm.editMode)">
     <md-dialog-content>
       <div class="md-dialog-content">
         <md-input-container class="md-block">
           <label ng-hide="vm.task">Title</label>
           <label ng-show="vm.task">Task</label>
-          <!-- TODO Auto Focus-->
-          <input type="text" ng-model="vm.title">
+          <input type="text" ng-model="vm.title" md-autofocus>
         </md-input-container>
       </div>
     </md-dialog-content>
@@ -17,10 +16,10 @@
       <!-- TODO Remove space under input -->
       <!-- TODO When creating task, input has to have something in it - so I might make this logic also for when editing task -->
       <!-- TODO Save/add should work on enter-->
-      <md-button class="md-raised md-accent" ng-hide="vm.editMode" ng-click="vm.save(vm.title, false)">
+      <md-button class="md-raised md-accent" ng-hide="vm.editMode" type="submit">
         Add
       </md-button>
-      <md-button class="md-raised md-accent" ng-show="vm.editMode" ng-click="vm.save(vm.title, true)">
+      <md-button class="md-raised md-accent" ng-show="vm.editMode" type="submit">
         Save
       </md-button>
     </md-dialog-actions>
