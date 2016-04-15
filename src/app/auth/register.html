@@ -7,9 +7,9 @@
       <form name="registerForm" ng-submit="vm.register(vm.user)">
         <md-input-container class="md-block">
           <label>User Name</label>
-          <input name="email" ng-model="vm.user.email" autofocus required>
+          <input name="email" type="email" ng-model="vm.user.email" autofocus required>
           <div ng-messages="registerForm.email.$error">
-            <div ng-message="required">User name is required</div>
+            <div ng-message-exp="['required', 'email']">A valid email address is required</div>
           </div>
         </md-input-container>
         <md-input-container class="md-block">
