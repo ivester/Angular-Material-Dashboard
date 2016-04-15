@@ -17,6 +17,21 @@
 
     if(!vm.cards) {
       vm.cards = cardsService.getCards();
+
+      vm.cards.$loaded()
+        .then(function() {
+          loadingIndicatorService.removeLoading();
+        })
+        .catch(function(error) {
+          loadingIndicatorService.removeLoading();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent(error.message)
+              .position('top left')
+              .hideDelay(6000)
+          );
+          console.error("Error:", error);
+        });
     }
 
     $rootScope.$on('ir-logout', function () {
