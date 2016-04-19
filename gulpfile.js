@@ -31,4 +31,4 @@ gulp.task('getMainFiles', function() {
     .pipe(gulp.dest('src/assets/js/vendor'))
 });
 
-gulp.task('default', ['getMainFiles', 'serve']);
+gulp.task('default', ['serve']);
