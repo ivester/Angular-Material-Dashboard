@@ -1,0 +1,24 @@
+.ir-task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__drag {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    margin: 0;
+  }
+
+  //TODO Get font size from label as min-height
+  &__label {
+    min-height: 19px;
+    cursor: pointer;
+  }
+
+  .md-checked + label {
+    text-decoration: line-through;
+  }
+}

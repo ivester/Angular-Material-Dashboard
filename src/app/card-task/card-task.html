@@ -43,11 +43,11 @@
   </md-card-actions>
 
   <md-card-content>
-    <ul class="task-list task-list--js">
+    <ul class="ir-task-list ir-task-list--js">
       <li layout="row" layout-align="start center" ir-task-id="{{task.$id}}" ng-repeat="task in vm.tasks | taskFilterOrder:vm.card.taskIndex">
-        <md-icon class="drag-handle--js drag-handle" md-svg-icon="drag-handle"></md-icon>
-        <md-checkbox class="temp-no-margin" ng-model="task.check" ng-change="vm.saveTask(task)" aria-label="task-checkbox"></md-checkbox>
-        <label ng-click="vm.showEditTask(task, true)" flex>{{task.title}}</label>
+        <md-icon class="ir-task-list__drag ir-task-list__drag--js" md-svg-icon="drag-handle"></md-icon>
+        <md-checkbox class="ir-task-list__checkbox" ng-model="task.check" ng-change="vm.saveTask(task)" aria-label="task-checkbox"></md-checkbox>
+        <label class="ir-task-list__label" ng-click="vm.showEditTask(task, true)" flex>{{task.title}}</label>
         <md-button class="md-icon-button" ng-click="vm.removeTask(task)" aria-label="task-edit">
           <md-icon md-svg-icon="delete"></md-icon>
         </md-button>

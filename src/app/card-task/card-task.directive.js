@@ -29,7 +29,7 @@
         var task, taskKey, newTaskIndex,
           taskIdAndIndex = [];
 
-        tasks = elem[0].querySelector('.task-list--js').querySelectorAll('li');
+        tasks = elem[0].querySelector('.ir-task-list--js').querySelectorAll('li');
 
         for (newTaskIndex = 0; newTaskIndex < tasks.length; newTaskIndex++) {
           taskKey = tasks[newTaskIndex].getAttribute('ir-task-id');
@@ -139,9 +139,9 @@
     }
 
     //TODO make cards draggable too
-    dragularService([$element[0].querySelector('.task-list--js')], {
+    dragularService([$element[0].querySelector('.ir-task-list--js')], {
       moves: function (el, container, handle) {
-        return handle.querySelector('.drag-handle--js svg') !== null;
+        return handle.querySelector('.ir-task-list__drag--js svg') !== null;
       },
       nameSpace: 'task-list-' + vm.cardId,
       scope: $scope

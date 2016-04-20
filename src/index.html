@@ -12,6 +12,7 @@
 <body ng-app="app" layout="column" ng-controller="GlobalController as global">
 
 <md-toolbar
+  class="ir-toolbar"
   layout="row"
   layout-align="space-between center"
   ng-hide="global.hideNav()"
@@ -20,8 +21,8 @@
   <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
-  <div class="go-right-temp" layout="row" layout-align="center center">
-    <div class="ir-contrast">
+  <div class="ir-toolbar__more" layout="row" layout-align="center center">
+    <div class="ir-progress-circular">
       <md-progress-circular  ng-show="global.loadingStatus" md-mode="indeterminate" md-diameter="25"></md-progress-circular>
     </div>
     <md-menu>
