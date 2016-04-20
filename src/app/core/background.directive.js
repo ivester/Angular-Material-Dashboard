@@ -18,9 +18,13 @@
     var image = document.createElement('img');
 
     image.src = imageUrl;
-    image.onload = function () {
-      elem.addClass('background-image-full');
-      elem.css('background-image', 'url("' + imageUrl + '")');
-    };
+
+    //TODO - Without the timeout, the onload event sometimes doesn't get caught - why and is there a cleaner way to do the job?
+    setTimeout(function(){
+      image.onload = function () {
+        elem.addClass('ir-background__image');
+        elem.css('background-image', 'url("' + imageUrl + '")');
+      };
+    }, 0);
   }
 })();
