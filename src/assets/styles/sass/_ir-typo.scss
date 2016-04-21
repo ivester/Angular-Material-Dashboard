@@ -1,0 +1,8 @@
+a {
+  color: $color-primary-dark;
+  transition: color $ir-animation-fast;
+
+  &:hover, &:focus, &:active {
+    color: $color-text-primary;
+  }
+}
