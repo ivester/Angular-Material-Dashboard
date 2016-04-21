@@ -26,6 +26,9 @@
     "dragular": {
       "main": "dist/dragular.js"
     },
+    "angular-material": {
+      "main": ["modules/scss/angular-material.scss", "angular-material.js"]
+    },
     "material-design-icons": {
       "ignore": true
     }

@@ -1,11 +1,10 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
-var sass        = require('gulp-sass');
 var mainBowerFiles = require('main-bower-files');
+var sass        = require('gulp-sass');
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
-
+gulp.task('serve', ['sass', 'getMainFiles:scripts'], function() {
   browserSync.init({
     server: "./src",
     notify: false
@@ -16,19 +15,29 @@ gulp.task('serve', ['sass'], function() {
 });
 
 // Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
-  return gulp.src("src/assets/styles/sass/*.scss")
+gulp.task('sass', ['getMainFiles:styles'], function() {
+  var stream = gulp.src("src/assets/styles/sass/*.scss")
       .pipe(sass())
       .pipe(gulp.dest("src/assets/styles/css"))
       .pipe(browserSync.stream());
+
+  return stream;
 });
 
-// TODO No more dist folder in output - all flat please
-// TODO Get only js files
-// Get all main files from Bower
-gulp.task('getMainFiles', function() {
-  return gulp.src(mainBowerFiles(), { base: 'bower_components' })
-    .pipe(gulp.dest('src/assets/js/vendor'))
+// Get all js main files from Bower
+gulp.task('getMainFiles:styles', function() {
+  var stream = gulp.src(mainBowerFiles('**/*.scss'))
+    .pipe(gulp.dest('src/assets/styles/sass/vendor'));
+
+  return stream;
+});
+
+// Get all js main files from Bower
+gulp.task('getMainFiles:scripts', function() {
+  var stream = gulp.src(mainBowerFiles('**/*.js'))
+    .pipe(gulp.dest('src/assets/js/vendor'));
+
+  return stream;
 });
 
 gulp.task('default', ['serve']);
