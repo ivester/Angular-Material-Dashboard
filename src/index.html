@@ -11,32 +11,7 @@
 </head>
 <body ng-app="app" layout="column" ng-controller="GlobalController as global">
 
-<md-toolbar
-  class="ir-toolbar"
-  layout="row"
-  layout-align="space-between center"
-  ng-hide="global.hideNav()"
-  ng-controller="ToolbarController as vm"
-  ng-cloak>
-  <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
-    <md-icon md-svg-icon="menu" ></md-icon>
-  </md-button>
-  <div class="ir-toolbar__more" layout="row" layout-align="center center">
-    <div class="ir-progress-circular">
-      <md-progress-circular  ng-show="global.loadingStatus" md-mode="indeterminate" md-diameter="25"></md-progress-circular>
-    </div>
-    <md-menu>
-      <md-button aria-label="Open the more menu" class="md-icon-button" ng-click="$mdOpenMenu()">
-        <md-icon md-menu-origin md-svg-icon="more-vert"></md-icon>
-      </md-button>
-      <md-menu-content width="4">
-        <md-menu-item>
-          <md-button ng-click="vm.logout()" aria-label="logout-button">Logout</md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-  </div>
-</md-toolbar>
+<ir-toolbar></ir-toolbar>
 
 <div flex layout="row">
 
@@ -65,7 +40,6 @@
 <script src="app/core/core.module.js"></script>
 <script src="app/core/constants.js"></script>
 <script src="app/core/firebase-data.service.js"></script>
-<script src="app/core/cards.service.js"></script>
 <script src="app/core/loading-indicator.service.js"></script>
 
 <!-- Auth Module -->
@@ -83,6 +57,7 @@
 <!-- Toolbar Module -->
 <script src="app/toolbar/toolbar.module.js"></script>
 <script src="app/toolbar/toolbar.controller.js"></script>
+<script src="app/toolbar/toolbar.directive.js"></script>
 
 <!-- Sidenav Module -->
 <script src="app/sidenav/sidenav.module.js"></script>
@@ -92,6 +67,11 @@
 <script src="app/dashboard/dashboard.module.js"></script>
 <script src="app/dashboard/config.route.js"></script>
 <script src="app/dashboard/dashboard.controller.js"></script>
+
+<!-- Cards Module -->
+<script src="app/cards/cards.module.js"></script>
+<script src="app/cards/cards.service.js"></script>
+<script src="app/cards/cards.directive.js"></script>
 
 <!-- Card Task Module -->
 <script src="app/card-task/card-task.module.js"></script>

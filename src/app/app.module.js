@@ -19,6 +19,7 @@
       'app.toolbar',
       'app.sidenav',
       'app.dashboard',
+      'app.cards',
       'app.cardTask',
       'app.cardWeather'
     ])
