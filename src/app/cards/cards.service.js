@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.core')
+    .module('app.cards')
     .factory('cardsService', cardsService);
 
   cardsService.$inject = ['$firebaseArray', 'firebaseDataService', '$firebaseObject'];

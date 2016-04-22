@@ -50,14 +50,11 @@
       image.src = imageUrl;
 
       //TODO - Improve - Is there a way to not have to save hash on $scope
-      //TODO - Without the timeout, the onload event sometimes doesn't get caught - why and is there a cleaner way to do the job?
-      setTimeout(function(){
-        image.onload = function () {
-          image.setAttribute('class', 'ir-avatar--js');
-          image.setAttribute('alt', 'Profile Image');
-          imageToReplace.parentNode.replaceChild(image, imageToReplace);
-        };
-      }, 0);
+      image.onload = function () {
+        image.setAttribute('class', 'ir-avatar--js');
+        image.setAttribute('alt', 'Profile Image');
+        imageToReplace.parentNode.replaceChild(image, imageToReplace);
+      };
     }, true);
   }
 })();
