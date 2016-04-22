@@ -1,0 +1,15 @@
+.ir-progress-circular {
+  height: 25px;
+  width: 25px;
+
+  path {
+    stroke: #fff;
+  }
+}
+
+.ir-progress-linear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}

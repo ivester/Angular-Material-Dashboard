@@ -1,0 +1,20 @@
+// TODO Find a way to import dragular styles into main css so styles don't have to be copied into the sass file - maybe there is a sass version?
+//Styles for Dragular
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+}
+
+.gu-hide {
+  display: none !important;
+}
+
+.gu-unselectable {
+  user-select: none !important;
+}
+
+.gu-transit {
+  opacity: 0.2;
+}

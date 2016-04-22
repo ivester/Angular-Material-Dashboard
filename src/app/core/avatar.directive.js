@@ -40,21 +40,24 @@
       var imagePlaceholder = document.createElement('div');
       var imageUrl = 'http://www.gravatar.com/avatar/' + scope.hash;
       var image = document.createElement('img');
-      var imageToReplace = document.querySelector('.profile-image--js');
+      var imageToReplace = document.querySelector('.ir-avatar--js');
 
       //Prevent flash after logout and login with a new user
-      imagePlaceholder.setAttribute('class', 'profile-image--js');
+      imagePlaceholder.setAttribute('class', 'ir-avatar--js');
       imageToReplace.parentNode.replaceChild(imagePlaceholder, imageToReplace);
       imageToReplace = imagePlaceholder;
 
       image.src = imageUrl;
 
       //TODO - Improve - Is there a way to not have to save hash on $scope
-      image.onload = function () {
-        image.setAttribute('class', 'profile-image--js');
-        image.setAttribute('alt', 'Profile Image');
-        imageToReplace.parentNode.replaceChild(image, imageToReplace);
-      };
+      //TODO - Without the timeout, the onload event sometimes doesn't get caught - why and is there a cleaner way to do the job?
+      setTimeout(function(){
+        image.onload = function () {
+          image.setAttribute('class', 'ir-avatar--js');
+          image.setAttribute('alt', 'Profile Image');
+          imageToReplace.parentNode.replaceChild(image, imageToReplace);
+        };
+      }, 0);
     }, true);
   }
 })();

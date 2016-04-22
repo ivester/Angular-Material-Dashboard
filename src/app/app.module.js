@@ -40,7 +40,7 @@
       .icon('edit', './assets/img/ic_edit_24px.svg', 24)
       .icon('add', './assets/img/ic_add_24px.svg', 24)
       .icon('assignment', './assets/img/ic_assignment_24px.svg', 24)
-      .icon('drag-handle', './assets/img/ic_drag_handle_24px.svg', 24);
+      .icon('grain', './assets/img/ic_grain_24px.svg', 24);
     $routeProvider.otherwise({
       redirectTo: '/dashboard'
     });

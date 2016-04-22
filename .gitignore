@@ -130,4 +130,6 @@ Temporary Items
 
 #Custom
 src/assets/js/vendor
+src/assets/styles/sass/vendor
 src/assets/styles/css
+firebase.json
