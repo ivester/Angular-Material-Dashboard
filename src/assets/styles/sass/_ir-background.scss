@@ -1,0 +1,23 @@
+// md-content covers background-image when it's not set to z-index 0
+md-content {
+  z-index: 0;
+}
+
+.ir-background {
+  &__image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    --webkit-animation: ir-fade-in $ir-animation-medium ease-in;
+    animation: ir-fade-in $ir-animation-medium ease-in;
+  }
+}

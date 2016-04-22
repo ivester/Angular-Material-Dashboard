@@ -12,6 +12,7 @@
 <body ng-app="app" layout="column" ng-controller="GlobalController as global">
 
 <md-toolbar
+  class="ir-toolbar"
   layout="row"
   layout-align="space-between center"
   ng-hide="global.hideNav()"
@@ -20,8 +21,8 @@
   <md-button class="md-icon-button" hide-gt-sm ng-click="vm.toggleSidenav()" aria-label="menu-button">
     <md-icon md-svg-icon="menu" ></md-icon>
   </md-button>
-  <div class="go-right-temp" layout="row" layout-align="center center">
-    <div class="ir-contrast">
+  <div class="ir-toolbar__more" layout="row" layout-align="center center">
+    <div class="ir-progress-circular">
       <md-progress-circular  ng-show="global.loadingStatus" md-mode="indeterminate" md-diameter="25"></md-progress-circular>
     </div>
     <md-menu>
@@ -46,16 +47,16 @@
 </div>
 
 <!-- Third-party JS -->
-<script src="assets/js/vendor/angular/angular.js"></script>
-<script src="assets/js/vendor/angular-route/angular-route.js"></script>
-<script src="assets/js/vendor/angular-messages/angular-messages.js"></script>
-<script src="assets/js/vendor/angular-animate/angular-animate.js"></script>
-<script src="assets/js/vendor/angular-aria/angular-aria.js"></script>
-<script src="assets/js/vendor/angular-material/angular-material.js"></script>
-<script src="assets/js/vendor/firebase/firebase.js"></script>
-<script src="assets/js/vendor/angularfire/dist/angularfire.js"></script>
-<script src="assets/js/vendor/js-md5/js/md5.js"></script>
-<script src="assets/js/vendor/dragular/dist/dragular.js"></script>
+<script src="assets/js/vendor/angular.js"></script>
+<script src="assets/js/vendor/angular-route.js"></script>
+<script src="assets/js/vendor/angular-messages.js"></script>
+<script src="assets/js/vendor/angular-animate.js"></script>
+<script src="assets/js/vendor/angular-aria.js"></script>
+<script src="assets/js/vendor/angular-material.js"></script>
+<script src="assets/js/vendor/firebase.js"></script>
+<script src="assets/js/vendor/angularfire.js"></script>
+<script src="assets/js/vendor/md5.js"></script>
+<script src="assets/js/vendor/dragular.js"></script>
 
 <!-- Main App Module -->
 <script src="app/app.module.js"></script>

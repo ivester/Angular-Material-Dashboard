@@ -1,0 +1,24 @@
+// Colors
+$color-text: #FFFFFF;
+$color-text-primary: #212121;
+$color-text-secondary: #727272;
+$color-divider: #B6B6B6;
+$color-primay-light: #D7CCC8;
+$color-primary: #795548;
+$color-primary-dark: #5D4037;
+$color-accent: #448AFF;
+
+// Animation - keyframes
+@-webkit-keyframes ir-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes ir-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+// Animation - duration
+$ir-animation-medium: 0.5s;
+$ir-animation-fast: 0.2s;

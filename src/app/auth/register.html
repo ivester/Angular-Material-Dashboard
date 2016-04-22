@@ -1,8 +1,8 @@
-<md-content class="ir-auth" flex id="content" layout="row" layout-align="center center">
+<md-content flex id="content" layout="row" layout-align="center center">
   <ir-background ir-background-image="https://source.unsplash.com/VNseEaTt9w4/1600x900"></ir-background>
   <md-progress-linear class="ir-progress-linear" ng-show="vm.loginStatus" md-mode="indeterminate"></md-progress-linear>
 
-  <md-card class="md-whiteframe-z1" layout="column" flex="100" flex-sm="60" flex-gt-sm="40" layout-padding>
+  <md-card class="ir-auth md-whiteframe-z1" layout="column" flex="100" flex-sm="60" flex-gt-sm="40" layout-padding>
     <md-card-content>
       <form name="registerForm" ng-submit="vm.register(vm.user)">
         <md-input-container class="md-block">
@@ -23,7 +23,7 @@
         <!-- TODO login should work on enter -->
         <section layout="row" layout-align="center center">
           <a href="#login">Have already an account?</a>
-          <md-button class="md-raised md-primary button-style-temp" type="submit" ng-disabled="registerForm.$invalid">Register</md-button>
+          <md-button class="md-raised md-primary ir-auth__submit" type="submit" ng-disabled="registerForm.$invalid">Register</md-button>
         </section>
       </form>
     </md-card-content>
