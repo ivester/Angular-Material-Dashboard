@@ -19,12 +19,17 @@
 
     image.src = imageUrl;
 
-    //TODO - Without the timeout, the onload event sometimes doesn't get caught - why and is there a cleaner way to do the job?
+    //TODO - This double onload registration, once with and once without the timeout has been the only way to always catch the event - why?
     setTimeout(function(){
       image.onload = function () {
         elem.addClass('ir-background__image');
         elem.css('background-image', 'url("' + imageUrl + '")');
       };
     }, 0);
+
+    image.onload = function () {
+      elem.addClass('ir-background__image');
+      elem.css('background-image', 'url("' + imageUrl + '")');
+    };
   }
 })();
